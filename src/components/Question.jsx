@@ -1,5 +1,6 @@
 import Answer from "./Answer";
 import "./question.css";
+import he from "he";
 
 export default function Question(props) {
   let { question } = props;
@@ -10,7 +11,7 @@ export default function Question(props) {
 
   return (
     <div className="question">
-      <p className="question--label">{question.question}</p>
+      <p className="question--label">{he.decode(question.question)}</p>
       <div className="question--answers">{answerElements}</div>
     </div>
   );
