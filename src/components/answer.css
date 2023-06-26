@@ -1,0 +1,42 @@
+.answer{
+  border-radius: 7.71px;
+  border: 0.771px solid #4D5B9E;
+  padding: 10px;
+  color: #293264;
+  text-align: center;
+  font-size: 10.24px;
+  font-family: Inter;
+  font-weight: 500;
+}
+
+
+.answer:hover{
+  background: #D6DBF5;
+  border: 0.771px solid #D6DBF5
+}
+
+.disabled{
+  opacity: 0.5;
+}
+
+
+.selected{
+  background: #D6DBF5;
+  border: 0.771px solid #D6DBF5;
+}
+
+
+.correct{
+  background: #D6DBF5;
+  border: 0.771px solid #D6DBF5;
+}
+
+.correct {
+  background: #94D7A2;
+  border: 0.771px solid #94D7A2;
+}
+
+.wrong {
+  background: #F8BCBC;
+  border: 0.771px solid #F8BCBC;
+}
