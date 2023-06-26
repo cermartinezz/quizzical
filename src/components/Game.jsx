@@ -7,6 +7,15 @@ export default function Game() {
   let [questions, setQuestions] = useState([]);
 
   useEffect(() => {
+    // fetchQuestions();
+    // async function fetchQuestions() {
+    //   const response = await fetch(
+    //     "https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple"
+    //   );
+    //   let data = await response.json();
+    //   setQuestions(data.results);
+    // }
+
     prepareQuestions(dataQuestions.results);
 
     function prepareQuestions(questions) {
@@ -21,14 +30,30 @@ export default function Game() {
         return { ...question, all_answers, selected_answer, id: nanoid() };
       });
 
-      console.log(finalQuestions);
-
       setQuestions(finalQuestions);
     }
   }, []);
 
+  function selectAnswer(question_id, answer_id) {
+    setQuestions((prevQuestions) => {
+      return prevQuestions.map((question) => {
+        if (question.id == question_id) {
+          return { ...question, selected_answer: answer_id };
+        }
+
+        return question;
+      });
+    });
+  }
+
   const questionElements = questions.map((question, index) => {
-    return <Question key={index} question={question} />;
+    return (
+      <Question
+        key={index}
+        question={question}
+        handleSelection={selectAnswer}
+      />
+    );
   });
 
   return <>{questions.length > 0 && <div>{questionElements}</div>}</>;
