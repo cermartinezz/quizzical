@@ -1,12 +1,17 @@
-.question--answers{
-  display: flex;
-  gap: 10px;
+.question {
+  border-bottom: 2px solid #DBDEF0;
+  padding: 15px 0px;
 }
-
 
 .question--label {
   color: #293264;
   font-size: 18px;
   font-family: Karla;
   font-weight: 700;
+  width: 352px;
+}
+
+.question--answers{
+  display: flex;
+  column-gap: 20px;
 }
