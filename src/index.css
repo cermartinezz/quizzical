@@ -1,13 +1,18 @@
+* {
+  box-sizing: border-box;
+}
+
 html, body {
   margin: 0;
-  height: 100%;
   font-family: 'Karla', sans-serif;
   background: #F5F7FB;
 }
 
 .container{
   padding: 20px 75px;
-  min-height: 100%;
+  min-height: 100vh;
+  height: 100%;
+  width: auto;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,6 +1,7 @@
 .question {
   border-bottom: 2px solid #DBDEF0;
   padding: 15px 0px;
+  width: 100%;
 }
 
 .question--label {
@@ -8,7 +9,6 @@
   font-size: 18px;
   font-family: Karla;
   font-weight: 700;
-  width: 352px;
 }
 
 .question--answers{
