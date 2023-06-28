@@ -17,6 +17,7 @@
 
 .disabled{
   opacity: 0.5;
+  pointer-events: none;
 }
 
 
@@ -25,18 +26,14 @@
   border: 1px solid #D6DBF5;
 }
 
-
-.correct{
-  background: #D6DBF5;
-  border: 1px solid #D6DBF5;
-}
-
 .correct {
   background: #94D7A2;
   border: 1px solid #94D7A2;
+  pointer-events: none;
 }
 
 .wrong {
   background: #F8BCBC;
   border: 1px solid #F8BCBC;
+  pointer-events: none;
 }

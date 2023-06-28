@@ -5,13 +5,14 @@ import he from "he";
 export default function Question(props) {
   let { question } = props;
 
-  let answerElements = question.all_answers.map((answer) => {
+  let answerElements = question.answers.map((answer) => {
     return (
       <Answer
         key={answer.id}
         data={answer}
         question={question}
         handleSelection={props.handleSelection}
+        checkAnswer={props.checkAnswer}
       />
     );
   });

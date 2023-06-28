@@ -17,3 +17,48 @@ html, body {
   justify-content: center;
   align-items: center;
 }
+
+.btn {
+  font-family: 'Karla';
+  font-weight: 700;
+  border-radius: 15px;
+  background: #4D5B9E;
+  width: 193px;
+  height: 52px;
+  color: #F5F7FB;
+  border: 0 transparent;
+  font-size: 20px;
+}
+
+.btn:hover {
+  background: #6471b1;
+}
+
+.btn:active {
+  background: #5264be;
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.game--answer {
+  margin-bottom: 20px;
+}
+
+.game--result {
+  display: flex;
+  gap:30px
+}
+
+
+.game--result > p {
+  color: #293264;
+  text-align: center;
+  font-size: 16px;
+  font-family: Inter;
+  font-weight: 700;
+}
