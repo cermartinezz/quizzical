@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import dataQuestions from "./data";
 import { nanoid } from "nanoid";
 import Question from "./Question";
 
@@ -8,45 +7,43 @@ export default function Game() {
   let [checkAnswer, setCheckAnswer] = useState(false);
 
   useEffect(() => {
-    // fetchQuestions();
-    // async function fetchQuestions() {
-    //   const response = await fetch(
-    //     "https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple"
-    //   );
-    //   let data = await response.json();
-    //   setQuestions(data.results);
-    // }
-
-    prepareQuestions(dataQuestions.results);
-
-    function prepareQuestions(questions) {
-      let finalQuestions = questions.map((question) => {
-        let answers = [...question.incorrect_answers];
-        let good_answer = { id: nanoid(), label: question.correct_answer };
-        answers = answers.map((answer) => {
-          return {
-            id: nanoid(),
-            label: answer,
-            correct: null,
-            selected: false,
-          };
-        });
-        answers.push(good_answer);
-        answers.sort(() => Math.random() - 0.5);
-
-        let correct = false;
-        return {
-          ...question,
-          answers,
-          correct,
-          id: nanoid(),
-          correct_answer: good_answer,
-        };
-      });
-
-      setQuestions(finalQuestions);
+    fetchQuestions();
+    async function fetchQuestions() {
+      const response = await fetch(
+        "https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple"
+      );
+      let data = await response.json();
+      prepareQuestions(data.results);
     }
   }, []);
+
+  function prepareQuestions(questions) {
+    let finalQuestions = questions.map((question) => {
+      let answers = [...question.incorrect_answers];
+      let good_answer = { id: nanoid(), label: question.correct_answer };
+      answers = answers.map((answer) => {
+        return {
+          id: nanoid(),
+          label: answer,
+          correct: null,
+          selected: false,
+        };
+      });
+      answers.push(good_answer);
+      answers.sort(() => Math.random() - 0.5);
+
+      let correct = false;
+      return {
+        ...question,
+        answers,
+        correct,
+        id: nanoid(),
+        correct_answer: good_answer,
+      };
+    });
+
+    setQuestions(finalQuestions);
+  }
 
   function selectAnswer(question_id, answer_id) {
     setQuestions((prevQuestions) => {
@@ -65,7 +62,22 @@ export default function Game() {
     });
   }
 
+  async function fetchQuestions() {
+    const response = await fetch(
+      "https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple"
+    );
+    let data = await response.json();
+
+    prepareQuestions(data.results);
+  }
+
   function validateQuestions() {
+    if (checkAnswer) {
+      fetchQuestions();
+      setCheckAnswer(false);
+      return;
+    }
+
     const answers_count = questions.filter((question) => {
       return question.selected;
     }).length;
